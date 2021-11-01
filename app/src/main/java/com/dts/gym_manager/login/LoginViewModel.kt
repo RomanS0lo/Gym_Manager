@@ -1,4 +1,6 @@
 package com.dts.gym_manager.login
 
-class LoginViewModel {
+import androidx.lifecycle.ViewModel
+
+class LoginViewModel: ViewModel() {
 }

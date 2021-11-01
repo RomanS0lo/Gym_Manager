@@ -19,7 +19,7 @@
         android:fontFamily="@font/oswald_regular"
         android:gravity="top"
         android:lineSpacingExtra="6sp"
-        android:text="New member?"
+        android:text="@string/label_new_member"
         android:textAppearance="@style/new_member_"
         android:textColor="#AAAAAA"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +38,7 @@
         android:layout_marginTop="127dp"
         android:gravity="top"
         android:fontFamily="@font/oswald_medium"
-        android:text="Sign In"
+        android:text="@string/label_sign_in"
         android:textAppearance="@style/sign_in"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
         android:textSize="17sp"
         android:fontFamily="@font/oswald_regular"
         android:lineSpacingExtra="6sp"
-        android:text="Welcome back"
+        android:text="@string/label_welcome_back"
         android:textAppearance="@style/welcome_bac"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
         android:layout_marginEnd="41dp"
-        android:hint="Email:"
+        android:hint="@string/label_enter_your_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
             android:autoText="true"
             android:background="#FFFFFF"
             android:inputType="textEmailAddress"
-            android:text="Enter Your Email" />
+            android:text="@string/label_email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +98,7 @@
         android:layout_marginStart="41dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="41dp"
-        android:hint="Password:"
+        android:hint="@string/label_password"
         app:passwordToggleDrawable="@drawable/ic_show"
         app:passwordToggleEnabled="true"
         app:passwordToggleTintMode="src_atop"
@@ -120,7 +120,7 @@
             android:autoText="true"
             android:background="#FFFFFF"
             android:inputType="textPassword"
-            android:text="Enter Your Password" />
+            android:text="@string/label_enter_your_password" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -144,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/oswald_regular"
-        android:text="ForgotPassword?"
+        android:text="@string/label_forgot_password"
         android:textColor="#324A59"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -159,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginBottom="71dp"
-        android:text="Sign up"
+        android:text="@string/label_sign_up"
         android:textColor="#324a59"
         android:fontFamily="@font/oswald_bold"
         app:layout_constraintBottom_toBottomOf="parent"

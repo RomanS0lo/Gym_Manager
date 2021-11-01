@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">gym-manager</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_new_member">New member?</string>
+    <string name="label_sign_in">Sign In</string>
+    <string name="label_welcome_back">Welcome back</string>
+    <string name="label_email">Email:</string>
+    <string name="label_enter_your_email">Enter Your Email</string>
+    <string name="label_password">Password:</string>
+    <string name="label_enter_your_password">Enter Your Password</string>
+    <string name="label_forgot_password">ForgotPassword?</string>
+    <string name="label_sign_up">Sign up</string>
 </resources>

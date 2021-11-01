@@ -1,16 +1,19 @@
 package com.dts.gym_manager.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.dts.gym_manager.R
 import com.dts.gym_manager.databinding.FragmentLoginBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
-   private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentLoginBinding
+
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

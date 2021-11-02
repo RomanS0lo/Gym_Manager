@@ -21,7 +21,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginBinding.bind(super.onCreateView(inflater, container, savedInstanceState)!!)
+        binding =
+            FragmentLoginBinding.bind(super.onCreateView(inflater, container, savedInstanceState)!!)
         return binding.root
     }
 
@@ -33,6 +34,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupListener() {
         binding.tvSignUp.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionFragmentLoginToSignUpFragment())
+        }
+        binding.btnNext.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            viewModel.login(email, password)
         }
     }
 }

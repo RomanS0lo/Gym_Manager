@@ -1,5 +1,7 @@
 package com.dts.gym_manager.di
 
+import com.dts.gym_manager.data.PrefsRepository
+import com.dts.gym_manager.data.PrefsRepositoryImpl
 import com.dts.gym_manager.domain.ApiService
 import com.dts.gym_manager.domain.retrofit.RestApiService
 import com.dts.gym_manager.home.HomeViewModel
@@ -32,10 +34,10 @@ val app = module {
 }
 
 val storage = module {
-
+    single<PrefsRepository> { PrefsRepositoryImpl(get(), get()) }
 }
 
 val viewModels = module {
-    viewModel { LoginViewModel(get()) }
+    viewModel { LoginViewModel(get(), get()) }
     viewModel { HomeViewModel() }
 }

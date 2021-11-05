@@ -13,6 +13,7 @@ import com.dts.gym_manager.R
 import com.dts.gym_manager.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -22,6 +23,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel: LoginViewModel by viewModel()
     private val handler = Handler()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (viewModel.isUserLogged()){
+            navigateToHome()
+        }else{
+            Timber.d("User is not logged in")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,12 +48,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         setupListener()
     }
 
+    private fun navigateToHome() = findNavController().navigate(LoginFragmentDirections.actionFragmentLoginToMainFragment())
+
     private fun setupObservers() {
         viewModel.onResultLogin().observe(viewLifecycleOwner) { successLogin ->
             if (successLogin) {
                 Snackbar.make(binding.btnNext, R.string.label_success, Snackbar.LENGTH_SHORT).show()
                 handler.postDelayed(1000) {
-                    findNavController().navigate(LoginFragmentDirections.actionFragmentLoginToMainFragment())
+                    navigateToHome()
                 }
             } else {
                 Snackbar.make(binding.btnNext, "Wrong email or password", Snackbar.LENGTH_SHORT)

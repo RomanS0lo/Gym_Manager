@@ -2,22 +2,31 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
+    android:id="@+id/navigation_gym_manager"
     app:startDestination="@id/fragment_login">
 
     <fragment
         android:id="@+id/fragment_login"
         android:name="com.dts.gym_manager.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_fragment_login_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_fragment_login_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/navigation_gym_manager" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.dts.gym_manager.sign_up.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.dts.gym_manager.main_screen.HomeFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_home" />
 
 </navigation>

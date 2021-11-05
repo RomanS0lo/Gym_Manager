@@ -9,4 +9,5 @@
     <string name="label_enter_your_password">Enter Your Password</string>
     <string name="label_forgot_password">ForgotPassword?</string>
     <string name="label_sign_up">Sign up</string>
+    <string name="label_success">Success!</string>
 </resources>

@@ -12,15 +12,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class RestApiService {
-
-    private val gson = Gson()
+class RestApiService(private val apiService: ApiService, private val gson: Gson) {
 
     fun login(email: String, password: String, onResult: OnApiResultCallback<Token>) {
-        val retrofit = ServiceBuilder.buildService(ApiService::class.java)
         val login = Login(email, password)
 
-        retrofit.login(login).enqueue(
+        apiService.login(login).enqueue(
             object : Callback<Token> {
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     if (response.isSuccessful) {

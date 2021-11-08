@@ -3,6 +3,7 @@ package com.dts.gym_manager.di
 import com.dts.gym_manager.data.PrefsRepository
 import com.dts.gym_manager.data.PrefsRepositoryImpl
 import com.dts.gym_manager.domain.ApiService
+import com.dts.gym_manager.domain.interceptor.TokenInterceptor
 import com.dts.gym_manager.domain.retrofit.RestApiService
 import com.dts.gym_manager.home.HomeViewModel
 import com.dts.gym_manager.login.LoginViewModel
@@ -20,6 +21,7 @@ val app = module {
         .addInterceptor(HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         })
+        .addInterceptor(TokenInterceptor(get()))
         .build()
     }
     single {

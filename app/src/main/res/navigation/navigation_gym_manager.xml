@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.dts.gym_manager.main_screen.HomeFragment"
+        android:name="com.dts.gym_manager.home.HomeFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_home" />
 

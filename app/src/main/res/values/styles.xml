@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="sign_in">StyleSignIn
-
-        <item name="android:textSize">
-            22sp
-        </item>
-
-        <item name="android:textColor">
-            #181D2D
-        </item>
-
+    <style name="SignIn">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#181D2D</item>
     </style>
 
-    <style name="welcome_bac">
-
-        <item name="android:textSize">
-            14sp
-        </item>
-
-        <item name="android:textColor">
-            #AAAAAA
-        </item>
-
+    <style name="WelcomeBack">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#AAAAAA</item>
     </style>
 
-    <style name="new_member_">
-
-        <item name="android:textSize">
-            14sp
-        </item>
-
-        <item name="android:textColor">
-            #AAAAAA
-        </item>
-
+    <style name="NewMember">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#AAAAAA</item>
     </style>
 
+    <style name="CardInfoText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

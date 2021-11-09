@@ -41,5 +41,5 @@ val storage = module {
 
 val viewModels = module {
     viewModel { LoginViewModel(get(), get()) }
-    viewModel { HomeViewModel() }
+    viewModel { HomeViewModel(get(), get()) }
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".login.LoginFragment">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNew_member"
         android:layout_width="80dp"
         android:layout_height="27dp"
@@ -19,14 +19,14 @@
         android:gravity="top"
         android:lineSpacingExtra="6sp"
         android:text="@string/label_new_member"
-        android:textAppearance="@style/new_member_"
+        android:textAppearance="@style/NewMember"
         android:textColor="#AAAAAA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,13 +37,13 @@
         android:fontFamily="@font/oswald_medium"
         android:gravity="top"
         android:text="@string/label_sign_in"
-        android:textAppearance="@style/sign_in"
+        android:textAppearance="@style/SignIn"
         android:textColor="#181D2D"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvWelcome"
         android:textColor="#AAAAAA"
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:fontFamily="@font/oswald_regular"
         android:lineSpacingExtra="6sp"
         android:text="@string/label_welcome_back"
-        android:textAppearance="@style/welcome_bac"
+        android:textAppearance="@style/WelcomeBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +139,7 @@
         app:tint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputPassword"
         app:layout_constraintVertical_bias="0.239" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="27dp"

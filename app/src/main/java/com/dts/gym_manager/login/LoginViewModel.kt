@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dts.gym_manager.data.PrefsRepository
-import com.dts.gym_manager.data.PrefsRepositoryImpl
 import com.dts.gym_manager.domain.OnApiResultCallback
 import com.dts.gym_manager.domain.retrofit.RestApiService
 import com.dts.gym_manager.model.Token
 import timber.log.Timber
 
-class LoginViewModel(private val apiService: RestApiService, private val prefs: PrefsRepository) : ViewModel() {
+class LoginViewModel(private val apiService: RestApiService, private val prefs: PrefsRepository) :
+    ViewModel() {
 
     private val loginResultLiveData = MutableLiveData<Boolean>()
 
@@ -30,6 +30,5 @@ class LoginViewModel(private val apiService: RestApiService, private val prefs: 
         })
     }
 
-
-    fun isUserLogged():Boolean = prefs.isUserLoggedIn
+    fun isUserLogged(): Boolean = prefs.isUserLoggedIn
 }

@@ -14,8 +14,6 @@ import com.dts.gym_manager.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
-import java.util.*
-import kotlin.concurrent.schedule
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -26,9 +24,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (viewModel.isUserLogged()){
+        if (viewModel.isUserLogged()) {
             navigateToHome()
-        }else{
+        } else {
             Timber.d("User is not logged in")
         }
     }
@@ -38,7 +36,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginBinding.bind(super.onCreateView(inflater, container, savedInstanceState)!!)
+        binding =
+            FragmentLoginBinding.bind(super.onCreateView(inflater, container, savedInstanceState)!!)
         return binding.root
     }
 
@@ -48,17 +47,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         setupListener()
     }
 
-    private fun navigateToHome() = findNavController().navigate(LoginFragmentDirections.actionFragmentLoginToMainFragment())
+    private fun navigateToHome() =
+        findNavController().navigate(LoginFragmentDirections.actionFragmentLoginToMainFragment())
 
     private fun setupObservers() {
         viewModel.onResultLogin().observe(viewLifecycleOwner) { successLogin ->
             if (successLogin) {
-                Snackbar.make(binding.btnNext, R.string.label_success, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.label_success, Snackbar.LENGTH_SHORT).show()
                 handler.postDelayed(1000) {
                     navigateToHome()
                 }
             } else {
-                Snackbar.make(binding.btnNext, "Wrong email or password", Snackbar.LENGTH_SHORT)
+                Snackbar.make(binding.root, R.string.label_wrong_email, Snackbar.LENGTH_SHORT)
                     .show()
             }
         }
@@ -72,7 +72,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.btnNext.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-
             viewModel.login(email, password)
         }
     }

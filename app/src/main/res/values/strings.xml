@@ -10,4 +10,10 @@
     <string name="label_forgot_password">ForgotPassword?</string>
     <string name="label_sign_up">Sign up</string>
     <string name="label_success">Success!</string>
+    <string name="label_first_mame">First name: %s</string>
+    <string name="label_last_name">First Name: %s</string>
+    <string name="label_age">Age: %s</string>
+    <string name="label_wrong_email">Wrong email or password</string>
+    <string name="message_membership_null">Membership doesn\'t exist!</string>
+    <string name="message_user_data_null">User not found</string>
 </resources>

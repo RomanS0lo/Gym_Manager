@@ -10,6 +10,7 @@ import com.dts.gym_manager.login.LoginViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import com.dts.gym_manager.sign_up.SignUpViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -41,5 +42,6 @@ val storage = module {
 
 val viewModels = module {
     viewModel { LoginViewModel(get(), get()) }
+    viewModel { SignUpViewModel(get()) }
     viewModel { HomeViewModel(get(), get()) }
 }

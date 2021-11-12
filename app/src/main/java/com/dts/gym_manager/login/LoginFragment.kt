@@ -69,7 +69,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.tvSignUp.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionFragmentLoginToSignUpFragment())
         }
-        binding.btnNext.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             viewModel.login(email, password)

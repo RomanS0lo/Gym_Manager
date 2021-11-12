@@ -2,7 +2,10 @@ package com.dts.gym_manager.domain.retrofit
 
 import com.dts.gym_manager.domain.ApiService
 import com.dts.gym_manager.domain.OnApiResultCallback
-import com.dts.gym_manager.domain.retrofit.exception.*
+import com.dts.gym_manager.domain.retrofit.exception.MembershipDataNullException
+import com.dts.gym_manager.domain.retrofit.exception.MembershipNullException
+import com.dts.gym_manager.domain.retrofit.exception.TokenNullException
+import com.dts.gym_manager.domain.retrofit.exception.UserDataIsNullException
 import com.dts.gym_manager.domain.utils.asException
 import com.dts.gym_manager.model.*
 import com.google.gson.Gson
@@ -13,7 +16,11 @@ import timber.log.Timber
 
 class RestApiService(private val apiService: ApiService, private val gson: Gson) {
 
-    fun login(email: String, password: String, onResult: OnApiResultCallback<Token>) {
+    fun login(
+        email: String,
+        password: String,
+        onResult: OnApiResultCallback<Token>
+    ) {
         val login = Login(email, password)
 
         apiService.login(login).enqueue(
@@ -121,6 +128,55 @@ class RestApiService(private val apiService: ApiService, private val gson: Gson)
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
+                    Timber.e(t)
+                    onResult.onFail(t.message.asException())
+                }
+            }
+        )
+    }
+
+    fun register(
+        firstName: String,
+        lastName: String,
+        age: Int,
+        sex: User.Sex,
+        login: String,
+        password: String,
+        onResult: OnApiResultCallback<RegistrationInfo>
+    ) {
+        val user = RegistrationData(
+            firstName = firstName,
+            lastName = lastName,
+            age = age,
+            sex = sex,
+            login = login,
+            password = password,
+            type = User.Type.MEMBER
+        )
+
+
+
+        apiService.register(user).enqueue(
+            object : Callback<RegistrationInfo> {
+
+                override fun onResponse(
+                    call: Call<RegistrationInfo>,
+                    response: Response<RegistrationInfo>
+                ) {
+
+                    if (response.isSuccessful) {
+                        val registrationInfo = response.body()
+                        if (registrationInfo != null) {
+                            onResult.onSuccess(registrationInfo)
+                        } else {
+                            onResult.onFail(response.message().asException())
+                        }
+                    } else {
+                        onResult.onFail(response.message().asException())
+                    }
+                }
+
+                override fun onFailure(call: Call<RegistrationInfo>, t: Throwable) {
                     Timber.e(t)
                     onResult.onFail(t.message.asException())
                 }

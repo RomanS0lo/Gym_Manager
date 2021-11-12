@@ -5,15 +5,31 @@
     <string name="label_welcome_back">Welcome back</string>
     <string name="label_email">Email:</string>
     <string name="label_enter_your_email">Enter Your Email</string>
-    <string name="label_password">Password:</string>
+    <string name="label_password">Password</string>
     <string name="label_enter_your_password">Enter Your Password</string>
     <string name="label_forgot_password">ForgotPassword?</string>
     <string name="label_sign_up">Sign up</string>
     <string name="label_success">Success!</string>
-    <string name="label_first_mame">First name: %s</string>
-    <string name="label_last_name">First Name: %s</string>
-    <string name="label_age">Age: %s</string>
+    <string name="label_first_name_format">First name: %s</string>
+    <string name="label_last_name_format">First Name: %s</string>
+    <string name="label_age_format">Age: %s</string>
     <string name="label_wrong_email">Wrong email or password</string>
     <string name="message_membership_null">Membership doesn\'t exist!</string>
     <string name="message_user_data_null">User not found</string>
+    <string name="label_age">Age</string>
+    <string name="label_sex">Choose sex</string>git
+    <string name="label_login">Login</string>
+    <string name="label_already_a_member">Already a member?</string>
+    <string name="label_terms">By signing up you agree with our Terms of Use</string>
+    <string name="label_create_an_account">Create an account here</string>
+    <string name="label_last_name">Last name</string>
+    <string name="label_first_name">First name</string>
+    <string name="message_cant_register">Registration data is not correct</string>
+    <string name="label_male">MALE</string>
+    <string name="label_female">FEMALE</string>
+    <string name="label_choose_sex">Choose sex</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_wrong_email_or_password">Wrong email or password</string>
+
 </resources>

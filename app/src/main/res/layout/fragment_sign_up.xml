@@ -1,6 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnRegistration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="52dp"
+                android:backgroundTint="#324A59"
+                android:clickable="true"
+                android:src="@drawable/ic_arrow___right"
+                app:backgroundTint="#324A59"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTerms"
+                app:rippleColor="@color/white"
+                app:tint="@color/white"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llFirstNameContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/background_bottom_line_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount"
+                app:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivFirstName"
+                    style="@style/InputIconProfile"
+                    app:srcCompat="@drawable/ic_profile" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etFirstName"
+                    style="@style/InputProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/label_first_name"
+                    android:paddingStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llLastNameContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/background_bottom_line_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llFirstNameContainer"
+                app:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivLAstName"
+                    style="@style/InputIconProfile"
+                    app:srcCompat="@drawable/ic_profile" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etLastName"
+                    style="@style/InputProfile"
+                    android:layout_width="286dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/label_last_name"
+                    android:paddingStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llFirstNameContainer" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llAgeContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/background_bottom_line_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llLastNameContainer"
+                app:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivAge"
+                    style="@style/InputIconProfile"
+                    app:srcCompat="@drawable/ic_outline_numbers_24" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAge"
+                    style="@style/InputProfile"
+                    android:layout_width="286dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/label_age"
+                    android:inputType="number"
+                    android:paddingStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llLastNameContainer" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llSexContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/background_bottom_line_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llAgeContainer"
+                app:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivSex"
+                    style="@style/InputIconProfile"
+                    app:srcCompat="@drawable/ic_outline_male_24" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSex"
+                    style="@style/InputProfile"
+                    android:layout_width="286dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/label_sex"
+                    android:paddingStart="8dp"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llAgeContainer" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llLoginContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/background_bottom_line_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llSexContainer"
+                app:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivLogin"
+                    style="@style/InputIconProfile"
+                    app:srcCompat="@drawable/ic_message" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etLogin"
+                    style="@style/InputProfile"
+                    android:layout_width="286dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/label_login"
+                    android:paddingStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llSexContainer" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llPasswordContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/background_bottom_line_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llLoginContainer"
+                app:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivPassword"
+                    style="@style/InputIconProfile"
+                    app:srcCompat="@drawable/ic_lock" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etPassword"
+                    style="@style/InputProfile"
+                    android:layout_width="286dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/label_password"
+                    android:inputType="textPassword"
+                    android:paddingStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llLoginContainer" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAlreadyMember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_already_a_member"
+                android:textColor="#AAAAAA"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_sign_in"
+                android:textColor="#181D2D"
+                app:layout_constraintStart_toEndOf="@+id/tvAlreadyMember"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/label_terms"
+                android:textColor="#324A59"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llPasswordContainer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/label_create_an_account"
+                android:textColor="#AAAAAA"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSignup" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSignup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="36dp"
+                android:text="@string/label_sign_up"
+                android:textColor="#181D2D"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

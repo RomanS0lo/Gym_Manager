@@ -1,9 +1,6 @@
 package com.dts.gym_manager.domain
 
-import com.dts.gym_manager.model.Login
-import com.dts.gym_manager.model.Membership
-import com.dts.gym_manager.model.Token
-import com.dts.gym_manager.model.User
+import com.dts.gym_manager.model.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -22,4 +19,7 @@ interface ApiService {
 
     @GET("/users/my_info")
     fun getUserById(): Call<User>
+
+    @POST("/register")
+    fun register(@Body data: RegistrationData): Call<RegistrationInfo>
 }

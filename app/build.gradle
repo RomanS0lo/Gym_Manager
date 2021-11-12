@@ -38,8 +38,6 @@ android {
     }
 }
 
-def koin_version = "3.1.3"
-
 dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
@@ -47,12 +45,12 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
     // Koin main features for Android
-    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android:3.1.3"
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // serializer&deserializer, only for format JSON.
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'// serializer&deserializer, only for format JSON.
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'

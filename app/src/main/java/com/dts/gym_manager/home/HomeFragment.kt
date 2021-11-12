@@ -33,11 +33,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setupData() {
         viewModel.onUserInfoResult().observe(viewLifecycleOwner) { userInfo ->
-            binding.tvFirstName.text =
-                resources.getString(R.string.label_first_mame, userInfo.firstName.orEmpty())
-            binding.tvLastName.text =
-                resources.getString(R.string.label_last_name, userInfo.lastName.orEmpty())
-            binding.tvAge.text = resources.getString(R.string.label_age, userInfo.age.toString())
+            binding.tvFirstName.text = resources.getString(R.string.label_first_name_format, userInfo.firstName.orEmpty())
+            binding.tvLastName.text = resources.getString(R.string.label_last_name_format, userInfo.lastName.orEmpty())
+            binding.tvAge.text = resources.getString(R.string.label_age_format, userInfo.age.toString())
         }
         viewModel.onMembershipResult().observe(viewLifecycleOwner) { membership ->
             binding.tvMembershipType.text = membership.level.name

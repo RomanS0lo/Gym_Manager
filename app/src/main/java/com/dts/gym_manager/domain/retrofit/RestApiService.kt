@@ -1,5 +1,6 @@
 package com.dts.gym_manager.domain.retrofit
 
+import com.dts.gym_manager.data.PrefsRepository
 import com.dts.gym_manager.domain.ApiService
 import com.dts.gym_manager.domain.OnApiResultCallback
 import com.dts.gym_manager.domain.retrofit.exception.MembershipDataNullException
@@ -14,7 +15,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class RestApiService(private val apiService: ApiService, private val gson: Gson) {
+class RestApiService(
+    private val apiService: ApiService,
+    private val gson: Gson,
+    private val prefs: PrefsRepository
+) {
 
     fun login(
         email: String,
@@ -28,6 +33,7 @@ class RestApiService(private val apiService: ApiService, private val gson: Gson)
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     if (response.isSuccessful) {
                         val resultToken = response.body()
+                        prefs.token = resultToken
                         if (resultToken != null) onResult.onSuccess(resultToken)
                         else onResult.onFail(TokenNullException())
                     } else {
@@ -154,8 +160,6 @@ class RestApiService(private val apiService: ApiService, private val gson: Gson)
             type = User.Type.MEMBER
         )
 
-
-
         apiService.register(user).enqueue(
             object : Callback<RegistrationInfo> {
 
@@ -163,10 +167,12 @@ class RestApiService(private val apiService: ApiService, private val gson: Gson)
                     call: Call<RegistrationInfo>,
                     response: Response<RegistrationInfo>
                 ) {
-
                     if (response.isSuccessful) {
                         val registrationInfo = response.body()
                         if (registrationInfo != null) {
+                            prefs.user = registrationInfo.user
+                            prefs.token = registrationInfo.token
+
                             onResult.onSuccess(registrationInfo)
                         } else {
                             onResult.onFail(response.message().asException())

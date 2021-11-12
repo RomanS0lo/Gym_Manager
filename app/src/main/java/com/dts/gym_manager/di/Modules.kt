@@ -33,7 +33,7 @@ val app = module {
             .build()
     }
     single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
-    single { RestApiService(get(), get()) }
+    single { RestApiService(get(), get(), get()) }
 }
 
 val storage = module {

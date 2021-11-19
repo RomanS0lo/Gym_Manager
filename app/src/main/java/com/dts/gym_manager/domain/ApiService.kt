@@ -5,14 +5,15 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface ApiService {
 
     @POST("/login")
-    fun login(@Body loginData: Login): Call<Token>
+    fun login(@Body loginData: Login): Call<RegistrationInfo>
 
     @GET("/memberships")
-    fun getCurrentMembership(): Call<Membership>
+    fun getCurrentMembership(): Call<Membership?>
 
     @GET("/users")
     fun getUsersInfo(): Call<User>
@@ -22,4 +23,10 @@ interface ApiService {
 
     @POST("/register")
     fun register(@Body data: RegistrationData): Call<RegistrationInfo>
+
+    @GET("/wallets")
+    fun getWallets(): Call<List<Wallets>>
+
+    @PUT("/wallets")
+    fun topUp(@Body value: TopUp): Call<Wallets>
 }

@@ -12,27 +12,37 @@ import com.dts.gym_manager.domain.retrofit.exception.MembershipNullException
 import com.dts.gym_manager.domain.retrofit.exception.UserDataIsNullException
 import com.dts.gym_manager.model.Membership
 import com.dts.gym_manager.model.User
+import com.dts.gym_manager.model.Wallets
+import com.dts.gym_manager.model.WalletsViewState
 import timber.log.Timber
 
 class HomeViewModel(private val apiService: RestApiService, private val app: Application) :
     ViewModel() {
 
-    private var userInfoLiveData = MutableLiveData<User>()
+    private val userInfoLiveData = MutableLiveData<User>()
 
     private val onFailLiveData = MutableLiveData<String>()
 
-    private var userMembershipLiveData = MutableLiveData<Membership>()
+    private val userMembershipLiveData = MutableLiveData<Membership?>()
+
+    private val walletLiveData = MutableLiveData<WalletsViewState>()
+
+    fun onWalletResult(): LiveData<WalletsViewState> = walletLiveData
 
     fun onUserInfoResult(): LiveData<User> = userInfoLiveData
 
     fun onFailResult(): LiveData<String> = onFailLiveData
 
-    fun onMembershipResult(): LiveData<Membership> = userMembershipLiveData
+    fun onMembershipResult(): LiveData<Membership?> = userMembershipLiveData
 
     fun setupHomeData() {
-        apiService.getCurrentMembership(object : OnApiResultCallback<Membership> {
-            override fun onSuccess(response: Membership) {
-                userMembershipLiveData.postValue(response)
+        apiService.getCurrentMembership(object : OnApiResultCallback<Membership?> {
+            override fun onSuccess(response: Membership?) {
+                if (response != null) {
+                    userMembershipLiveData.postValue(response)
+                } else {
+                    Timber.e("Membership is null")
+                }
             }
 
             override fun onFail(exception: Exception) {
@@ -55,6 +65,25 @@ class HomeViewModel(private val apiService: RestApiService, private val app: App
 
                 }
             }
+        })
+
+        apiService.getWallets(object : OnApiResultCallback<List<Wallets>> {
+            override fun onSuccess(response: List<Wallets>) {
+                val hours = response.firstOrNull { it.type == Wallets.ValueType.HOURS }
+                val money = response.firstOrNull { it.type == Wallets.ValueType.MONEY }
+
+                walletLiveData.postValue(
+                    WalletsViewState(
+                        money?.amount ?: 0f,
+                        hours?.amount ?: 0f
+                    )
+                )
+            }
+
+            override fun onFail(exception: Exception) {
+                Timber.e(exception)
+            }
+
         })
     }
 }

@@ -1,5 +1,6 @@
 package com.dts.gym_manager.di
 
+import com.dts.gym_manager.MainViewModel
 import com.dts.gym_manager.data.PrefsRepository
 import com.dts.gym_manager.data.PrefsRepositoryImpl
 import com.dts.gym_manager.domain.ApiService
@@ -11,6 +12,7 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import com.dts.gym_manager.sign_up.SignUpViewModel
+import com.dts.gym_manager.top_up.TopUpViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -41,7 +43,9 @@ val storage = module {
 }
 
 val viewModels = module {
+    viewModel { MainViewModel() }
     viewModel { LoginViewModel(get(), get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { HomeViewModel(get(), get()) }
+    viewModel { TopUpViewModel(get()) }
 }

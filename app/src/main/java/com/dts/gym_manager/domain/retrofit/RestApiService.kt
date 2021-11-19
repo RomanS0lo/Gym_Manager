@@ -24,17 +24,18 @@ class RestApiService(
     fun login(
         email: String,
         password: String,
-        onResult: OnApiResultCallback<Token>
+        onResult: OnApiResultCallback<RegistrationInfo>
     ) {
         val login = Login(email, password)
 
         apiService.login(login).enqueue(
-            object : Callback<Token> {
-                override fun onResponse(call: Call<Token>, response: Response<Token>) {
+            object : Callback<RegistrationInfo> {
+                override fun onResponse(call: Call<RegistrationInfo>, response: Response<RegistrationInfo>) {
                     if (response.isSuccessful) {
-                        val resultToken = response.body()
-                        prefs.token = resultToken
-                        if (resultToken != null) onResult.onSuccess(resultToken)
+                        val result = response.body()
+                        prefs.token = result?.token
+                        prefs.user = result?.user
+                        if (result != null) onResult.onSuccess(result)
                         else onResult.onFail(TokenNullException())
                     } else {
                         response.errorBody()?.string()?.let { msg ->
@@ -48,7 +49,7 @@ class RestApiService(
                     }
                 }
 
-                override fun onFailure(call: Call<Token>, t: Throwable) {
+                override fun onFailure(call: Call<RegistrationInfo>, t: Throwable) {
                     Timber.e(t)
                     onResult.onFail(t.message.asException())
                 }
@@ -56,11 +57,11 @@ class RestApiService(
         )
     }
 
-    fun getCurrentMembership(onResult: OnApiResultCallback<Membership>) {
+    fun getCurrentMembership(onResult: OnApiResultCallback<Membership?>) {
         apiService.getCurrentMembership().enqueue(
-            object : Callback<Membership> {
+            object : Callback<Membership?> {
 
-                override fun onResponse(call: Call<Membership>, response: Response<Membership>) {
+                override fun onResponse(call: Call<Membership?>, response: Response<Membership?>) {
                     if (response.isSuccessful) {
                         val responseMembership = response.body()
                         if (responseMembership != null) onResult.onSuccess(responseMembership)
@@ -77,7 +78,7 @@ class RestApiService(
                     }
                 }
 
-                override fun onFailure(call: Call<Membership>, t: Throwable) {
+                override fun onFailure(call: Call<Membership?>, t: Throwable) {
                     Timber.e(t)
                     onResult.onFail(t.message.asException())
                 }
@@ -186,6 +187,63 @@ class RestApiService(
                     Timber.e(t)
                     onResult.onFail(t.message.asException())
                 }
+            }
+        )
+    }
+
+    fun getWallets(onResult: OnApiResultCallback<List<Wallets>>) {
+        apiService.getWallets().enqueue(
+            object : Callback<List<Wallets>> {
+                override fun onResponse(
+                    call: Call<List<Wallets>>,
+                    response: Response<List<Wallets>>
+                ) {
+                    if (response.isSuccessful) {
+                        val wallets = response.body()
+                        if (wallets != null) {
+                            onResult.onSuccess(wallets)
+                        } else {
+                            onResult.onFail(response.message().asException())
+                        }
+                    } else {
+                        onResult.onFail(response.message().asException())
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Wallets>>, t: Throwable) {
+                    Timber.e(t)
+                    onResult.onFail(t.message.asException())
+                }
+            }
+        )
+    }
+
+    fun topUp(valueType: Wallets.ValueType, value: Float, onResult: OnApiResultCallback<Wallets>) {
+        val topUp = TopUp(valueType, value)
+        apiService.topUp(topUp).enqueue(
+            object : Callback<Wallets> {
+                override fun onResponse(call: Call<Wallets>, response: Response<Wallets>) {
+                    if (response.isSuccessful) {
+                        val wallet = response.body()
+                        if (wallet != null) onResult.onSuccess(wallet)
+                        else onResult.onFail(TokenNullException())
+                    } else {
+                        response.errorBody()?.string()?.let { msg ->
+                            try {
+                                val error = gson.fromJson(msg, ApiError::class.java)
+                                onResult.onFail(error.msg.asException())
+                            } catch (e: Exception) {
+                                onResult.onFail(e)
+                            }
+                        } ?: onResult.onFail("Top Up is fail".asException())
+                    }
+                }
+
+                override fun onFailure(call: Call<Wallets>, t: Throwable) {
+                    Timber.e(t)
+                    onResult.onFail(t.message.asException())
+                }
+
             }
         )
     }

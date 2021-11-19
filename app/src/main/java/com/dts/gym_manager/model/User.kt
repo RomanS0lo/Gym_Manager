@@ -1,6 +1,7 @@
 package com.dts.gym_manager.model
 
 data class User(
+    val id: Long,
     val firstName: String,
     val lastName: String,
     val age: Int,

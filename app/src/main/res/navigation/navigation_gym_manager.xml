@@ -35,6 +35,15 @@
         android:id="@+id/mainFragment"
         android:name="com.dts.gym_manager.home.HomeFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_mainFragment_to_topUpFragment"
+            app:destination="@id/topUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topUpFragment"
+        android:name="com.dts.gym_manager.top_up.TopUpFragment"
+        android:label="TopUpFragment"
+        tools:layout="@layout/fragment_top_up"/>
 
 </navigation>

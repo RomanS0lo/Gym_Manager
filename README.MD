@@ -2,4 +2,6 @@
 ----------------------
 - Navigation component.
 - MVVM.
-- DI
+- DI Koin.
+- Logging via Timber.
+----------------------

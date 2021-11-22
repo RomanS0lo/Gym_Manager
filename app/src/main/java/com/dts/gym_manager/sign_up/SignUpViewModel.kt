@@ -44,7 +44,7 @@ class SignUpViewModel(private val apiService: RestApiService) : ViewModel() {
                     Timber.d("Register Success $response")
                 }
 
-                override fun onFail(exception: Exception) {
+                override fun onFail(exception: Exception, code: Int) {
                     Timber.e(exception)
                     loginResultLiveData.postValue(false)
                 }

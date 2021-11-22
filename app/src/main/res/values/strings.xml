@@ -11,7 +11,7 @@
     <string name="label_sign_up">Sign up</string>
     <string name="label_success">Success!</string>
     <string name="label_first_name_format">First name: %s</string>
-    <string name="label_last_name_format">First Name: %s</string>
+    <string name="label_last_name_format">Last name: %s</string>
     <string name="label_age_format">Age: %s</string>
     <string name="label_wrong_email">Wrong email or password</string>
     <string name="message_membership_null">Membership doesn\'t exist!</string>
@@ -43,6 +43,7 @@
     <string name="message_cart_empty">Cart is empty</string>
     <string name="label_purchase_successful">Purchase is successful</string>
     <string name="label_purchase_failed">Purchase is failed</string>
+    <string name="label_upgrade_membership_dialog">Do you want to upgrade your membership?</string>
 
     <plurals name="hourse_format">
         <item quantity="zero">%d hour</item>
@@ -50,5 +51,21 @@
         <item quantity="many">%d hours</item>
         <item quantity="other">%d hours</item>
     </plurals>
+    <string name="label_level">Level:</string>
+    <string name="label_buy">Buy</string>
+    <string name="label_month_duration_format">Membership for %d month plan</string>
+    <string name="label_dollars_25">$25.00</string>
+    <string name="label_dollars_100">$100.00</string>
+    <string name="label_dollars_160">$160.00</string>
+    <string name="label_basic_level">Basic</string>
+    <string name="label_gold_level">Gold</string>
+    <string name="label_premium_level">Premium</string>
+    <string name="label_price_format">$%.2f</string>
+    <string name="label_membership_was_created">Your membership was successfully created</string>
+    <string name="label_price_dont_exist">Price doesn\'t exist!</string>
+    <string name="label_body_is_empty">Body is empty</string>
+    <string name="label_attention">Attention</string>
+    <string name="label_accept">Accept</string>
+    <string name="label_decline">Decline</string>
 
 </resources>

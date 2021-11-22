@@ -8,8 +8,9 @@ import com.dts.gym_manager.domain.interceptor.TokenInterceptor
 import com.dts.gym_manager.domain.retrofit.RestApiService
 import com.dts.gym_manager.home.HomeViewModel
 import com.dts.gym_manager.login.LoginViewModel
-import com.dts.gym_manager.packet.PacketViewModel
 import com.google.gson.GsonBuilder
+import com.dts.gym_manager.packet.PacketViewModel
+import com.dts.gym_manager.membership_list.MembershipListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import com.dts.gym_manager.sign_up.SignUpViewModel
@@ -21,12 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val app = module {
     single { GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create() }
-    single { OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        })
-        .addInterceptor(TokenInterceptor(get()))
-        .build()
+    single {
+        OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .addInterceptor(TokenInterceptor(get()))
+            .build()
     }
     single {
         Retrofit.Builder()
@@ -49,6 +51,6 @@ val viewModels = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { HomeViewModel(get(), get()) }
     viewModel { TopUpViewModel(get()) }
-    viewModel { TopUpViewModel(get()) }
     viewModel { PacketViewModel(get()) }
+    viewModel { MembershipListViewModel(get(), get(), get()) }
 }

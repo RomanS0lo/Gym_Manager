@@ -16,8 +16,10 @@ import com.dts.gym_manager.model.Wallets
 import com.dts.gym_manager.model.WalletsViewState
 import timber.log.Timber
 
-class HomeViewModel(private val apiService: RestApiService, private val app: Application) :
-    ViewModel() {
+class HomeViewModel(
+    private val apiService: RestApiService,
+    private val app: Application
+) : ViewModel() {
 
     private val userInfoLiveData = MutableLiveData<User>()
 
@@ -45,20 +47,21 @@ class HomeViewModel(private val apiService: RestApiService, private val app: App
                 }
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 Timber.e(exception)
                 when (exception) {
                     is MembershipNullException -> onFailLiveData.postValue(app.getString(R.string.message_membership_null))
                     is MembershipDataNullException -> onFailLiveData.postValue(app.getString(R.string.message_membership_null))
                 }
             }
+
         })
         apiService.getUserById(object : OnApiResultCallback<User> {
             override fun onSuccess(response: User) {
                 userInfoLiveData.postValue(response)
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 Timber.e(exception)
                 when (exception) {
                     is UserDataIsNullException -> onFailLiveData.postValue(app.getString(R.string.message_user_data_null))
@@ -80,7 +83,7 @@ class HomeViewModel(private val apiService: RestApiService, private val app: App
                 )
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 Timber.e(exception)
             }
 

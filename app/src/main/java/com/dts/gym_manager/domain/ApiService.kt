@@ -22,6 +22,9 @@ interface ApiService {
     @GET("/users/my_info")
     fun getUserById(): Call<User>
 
+    @GET("/membership/price_list")
+    fun getMembershipPriceList(): Call<List<Price>>
+
     @POST("/register")
     fun register(@Body data: RegistrationData): Call<RegistrationInfo>
 
@@ -36,4 +39,10 @@ interface ApiService {
 
     @GET("/goods/purchase")
     fun purchaseGoods(@Query("goods_id") goodsId: Array<Long>): Call<Transaction>
+
+    @POST("/memberships")
+    fun createMemberships(@Body data: CreateMembershipInfo): Call<Membership>
+
+    @PUT("/memberships/upgrade")
+    fun upgradeMembership(@Body data: UpgradeMembershipInfo): Call<Membership>
 }

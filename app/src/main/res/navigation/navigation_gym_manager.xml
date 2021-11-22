@@ -42,6 +42,11 @@
         <action
             android:id="@+id/action_mainFragment_to_packetFragment"
             app:destination="@id/packetFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_membershipListFragment"
+            app:destination="@id/membershipListFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/topUpFragment"
@@ -53,5 +58,11 @@
         android:name="com.dts.gym_manager.packet.PacketFragment"
         android:label="PacketFragment"
         tools:layout="@layout/fragment_my_packet"/>
+
+    <fragment
+        android:id="@+id/membershipListFragment"
+        android:name="com.dts.gym_manager.membership_list.MembershipListFragment"
+        android:label="fragment_membership_list"
+        tools:layout="@layout/fragment_membership_list" />
 
 </navigation>

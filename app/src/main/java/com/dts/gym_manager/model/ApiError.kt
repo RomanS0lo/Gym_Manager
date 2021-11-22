@@ -1,5 +1,7 @@
 package com.dts.gym_manager.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ApiError(
-    val msg: String
+    @SerializedName("msg", alternate = ["message"]) val msg: String
 )

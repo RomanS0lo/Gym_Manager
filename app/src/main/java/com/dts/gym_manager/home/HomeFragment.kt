@@ -41,6 +41,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.fabShop.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionMainFragmentToPacketFragment())
         }
+        binding.fabBuyMembership.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionMainFragmentToMembershipListFragment())
+        }
     }
 
     private fun setupData() {

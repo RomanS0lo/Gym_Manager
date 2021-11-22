@@ -27,7 +27,7 @@ class PacketViewModel(private val apiService: RestApiService) : ViewModel() {
                 onGoodsLiveData.postValue(response)
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 Timber.e(exception)
             }
 
@@ -43,7 +43,7 @@ class PacketViewModel(private val apiService: RestApiService) : ViewModel() {
                 cartList.clear()
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 isPurchaseSuccessLiveData.postValue(false)
                 Timber.e(exception)
             }

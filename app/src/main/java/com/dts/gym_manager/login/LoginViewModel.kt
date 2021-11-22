@@ -24,7 +24,7 @@ class LoginViewModel(private val apiService: RestApiService, private val prefs: 
                 loginResultLiveData.postValue(true)
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 Timber.e(exception)
                 loginResultLiveData.postValue(false)
             }

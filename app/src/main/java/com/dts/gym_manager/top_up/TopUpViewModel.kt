@@ -38,7 +38,7 @@ class TopUpViewModel(private val apiService: RestApiService) : ViewModel() {
                     topUpLiveData.postValue(response)
                 }
 
-                override fun onFail(exception: Exception) {
+                override fun onFail(exception: Exception, code: Int) {
                     Timber.e(exception)
                 }
             })
@@ -58,7 +58,7 @@ class TopUpViewModel(private val apiService: RestApiService) : ViewModel() {
                 )
             }
 
-            override fun onFail(exception: Exception) {
+            override fun onFail(exception: Exception, code: Int) {
                 Timber.e(exception)
             }
         })

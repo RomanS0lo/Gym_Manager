@@ -3,10 +3,7 @@ package com.dts.gym_manager.domain.retrofit
 import com.dts.gym_manager.data.PrefsRepository
 import com.dts.gym_manager.domain.ApiService
 import com.dts.gym_manager.domain.OnApiResultCallback
-import com.dts.gym_manager.domain.retrofit.exception.MembershipDataNullException
-import com.dts.gym_manager.domain.retrofit.exception.MembershipNullException
-import com.dts.gym_manager.domain.retrofit.exception.TokenNullException
-import com.dts.gym_manager.domain.retrofit.exception.UserDataIsNullException
+import com.dts.gym_manager.domain.retrofit.exception.*
 import com.dts.gym_manager.domain.utils.asException
 import com.dts.gym_manager.model.*
 import com.google.gson.Gson
@@ -30,7 +27,10 @@ class RestApiService(
 
         apiService.login(login).enqueue(
             object : Callback<RegistrationInfo> {
-                override fun onResponse(call: Call<RegistrationInfo>, response: Response<RegistrationInfo>) {
+                override fun onResponse(
+                    call: Call<RegistrationInfo>,
+                    response: Response<RegistrationInfo>
+                ) {
                     if (response.isSuccessful) {
                         val result = response.body()
                         prefs.token = result?.token
@@ -240,6 +240,50 @@ class RestApiService(
                 }
 
                 override fun onFailure(call: Call<Wallets>, t: Throwable) {
+                    Timber.e(t)
+                    onResult.onFail(t.message.asException())
+                }
+
+            }
+        )
+    }
+    fun getGoodsList(onResult: OnApiResultCallback<List<Goods>>) {
+        apiService.getGoodsList().enqueue(
+            object : Callback<List<Goods>> {
+                override fun onResponse(call: Call<List<Goods>>, response: Response<List<Goods>>) {
+                    if (response.isSuccessful) {
+                        val goodsList = response.body()
+                        if (goodsList != null) onResult.onSuccess(goodsList)
+                        else onResult.onFail(GoodsNullException())
+                    } else {
+                        onResult.onFail(response.message().asException())
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Goods>>, t: Throwable) {
+                    Timber.e(t)
+                    onResult.onFail(t.message.asException())
+                }
+
+            }
+        )
+    }
+
+    fun purchaseGoods(goods: Array<Long>, onResult: OnApiResultCallback<Transaction>) {
+        apiService.purchaseGoods(goods).enqueue(
+            object : Callback<Transaction> {
+
+                override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
+                    if (response.isSuccessful) {
+                        val goodsList = response.body()
+                        if (goodsList != null) onResult.onSuccess(goodsList)
+                        else onResult.onFail(GoodsNullException())
+                    } else {
+                        onResult.onFail(response.message().asException())
+                    }
+                }
+
+                override fun onFailure(call: Call<Transaction>, t: Throwable) {
                     Timber.e(t)
                     onResult.onFail(t.message.asException())
                 }

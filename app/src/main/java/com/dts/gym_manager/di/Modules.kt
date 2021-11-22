@@ -8,6 +8,7 @@ import com.dts.gym_manager.domain.interceptor.TokenInterceptor
 import com.dts.gym_manager.domain.retrofit.RestApiService
 import com.dts.gym_manager.home.HomeViewModel
 import com.dts.gym_manager.login.LoginViewModel
+import com.dts.gym_manager.packet.PacketViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -48,4 +49,6 @@ val viewModels = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { HomeViewModel(get(), get()) }
     viewModel { TopUpViewModel(get()) }
+    viewModel { TopUpViewModel(get()) }
+    viewModel { PacketViewModel(get()) }
 }

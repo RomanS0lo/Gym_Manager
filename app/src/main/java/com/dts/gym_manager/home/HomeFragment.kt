@@ -38,6 +38,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.btnTopUp.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionMainFragmentToTopUpFragment())
         }
+        binding.fabShop.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionMainFragmentToPacketFragment())
+        }
     }
 
     private fun setupData() {

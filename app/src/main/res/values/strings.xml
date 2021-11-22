@@ -37,6 +37,12 @@
     <string name="label_how_much">How much money do you want to add?</string>
     <string name="label_money">Money</string>
     <string name="label_hours">Hours</string>
+    <string name="dialog_add_to_card">Do you want add this to your cart?</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="message_cart_empty">Cart is empty</string>
+    <string name="label_purchase_successful">Purchase is successful</string>
+    <string name="label_purchase_failed">Purchase is failed</string>
 
     <plurals name="hourse_format">
         <item quantity="zero">%d hour</item>

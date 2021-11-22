@@ -39,11 +39,19 @@
         <action
             android:id="@+id/action_mainFragment_to_topUpFragment"
             app:destination="@id/topUpFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_packetFragment"
+            app:destination="@id/packetFragment" />
     </fragment>
     <fragment
         android:id="@+id/topUpFragment"
         android:name="com.dts.gym_manager.top_up.TopUpFragment"
         android:label="TopUpFragment"
         tools:layout="@layout/fragment_top_up"/>
+    <fragment
+        android:id="@+id/packetFragment"
+        android:name="com.dts.gym_manager.packet.PacketFragment"
+        android:label="PacketFragment"
+        tools:layout="@layout/fragment_my_packet"/>
 
 </navigation>

@@ -53,7 +53,7 @@ class TopUpRecyclerAdapter : RecyclerView.Adapter<TopUpRecyclerAdapter.TopUpView
 
     override fun getItemCount(): Int = items.size
 
-    fun unselectedAll(){
+    fun unselectedAll() {
         items.forEach { it.isSelected = false }
         notifyDataSetChanged()
     }

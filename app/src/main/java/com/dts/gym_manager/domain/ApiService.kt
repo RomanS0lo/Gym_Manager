@@ -6,6 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -29,4 +30,10 @@ interface ApiService {
 
     @PUT("/wallets")
     fun topUp(@Body value: TopUp): Call<Wallets>
+
+    @GET("/goods")
+    fun getGoodsList(): Call<List<Goods>>
+
+    @GET("/goods/purchase")
+    fun purchaseGoods(@Query("goods_id") goodsId: Array<Long>): Call<Transaction>
 }

@@ -173,14 +173,30 @@
         android:id="@+id/fabBuyMembership"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="88dp"
         android:layout_marginBottom="16dp"
         app:backgroundTint="@color/black"
         app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="@color/white"
-        app:srcCompat="@drawable/ic_shopping_bag"
+        app:srcCompat="@drawable/ic_card"
         app:tint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:tint="@color/white"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fabBuyMembership"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_shopping_bag" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
